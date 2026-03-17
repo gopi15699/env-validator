@@ -1,6 +1,6 @@
 {
   "name": "@gopinath_natarajan/env-validator",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Schema-based environment variable validator with full TypeScript type inference — validates required vars are present, typed, and within constraints before your Node.js app starts.",
   "keywords": [
     "env",
@@ -17,23 +17,23 @@
   "license": "MIT",
   "exports": {
     ".": {
-      "types":   "./dist/index.d.ts",
-      "import":  "./dist/index.mjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
     "./integrations/express": {
-      "types":   "./dist/integrations/express.d.ts",
-      "import":  "./dist/integrations/express.mjs",
+      "types": "./dist/integrations/express.d.ts",
+      "import": "./dist/integrations/express.mjs",
       "require": "./dist/integrations/express.js"
     },
     "./integrations/lambda": {
-      "types":   "./dist/integrations/lambda.d.ts",
-      "import":  "./dist/integrations/lambda.mjs",
+      "types": "./dist/integrations/lambda.d.ts",
+      "import": "./dist/integrations/lambda.mjs",
       "require": "./dist/integrations/lambda.js"
     },
     "./plugins/aws-secrets": {
-      "types":   "./dist/plugins/aws-secrets.d.ts",
-      "import":  "./dist/plugins/aws-secrets.mjs",
+      "types": "./dist/plugins/aws-secrets.d.ts",
+      "import": "./dist/plugins/aws-secrets.mjs",
       "require": "./dist/plugins/aws-secrets.js"
     }
   },
