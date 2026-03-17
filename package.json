@@ -1,0 +1,99 @@
+{
+  "name": "@gopinath_natarajan/env-validator",
+  "version": "2.0.0",
+  "description": "Schema-based environment variable validator with full TypeScript type inference — validates required vars are present, typed, and within constraints before your Node.js app starts.",
+  "keywords": [
+    "env",
+    "environment",
+    "validation",
+    "dotenv",
+    "config",
+    "cli",
+    "schema",
+    "typescript",
+    "devops"
+  ],
+  "author": "Gopinath Natarajan",
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "types":   "./dist/index.d.ts",
+      "import":  "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./integrations/express": {
+      "types":   "./dist/integrations/express.d.ts",
+      "import":  "./dist/integrations/express.mjs",
+      "require": "./dist/integrations/express.js"
+    },
+    "./integrations/lambda": {
+      "types":   "./dist/integrations/lambda.d.ts",
+      "import":  "./dist/integrations/lambda.mjs",
+      "require": "./dist/integrations/lambda.js"
+    },
+    "./plugins/aws-secrets": {
+      "types":   "./dist/plugins/aws-secrets.d.ts",
+      "import":  "./dist/plugins/aws-secrets.mjs",
+      "require": "./dist/plugins/aws-secrets.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "env-validator": "./dist/cli.js"
+  },
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=18.3.0"
+  },
+  "scripts": {
+    "build": "tsup && chmod +x dist/cli.js",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:types": "vitest --typecheck",
+    "prepublishOnly": "npm run build && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.0.0",
+    "@aws-sdk/client-secrets-manager": "^3.540.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  },
+  "peerDependencies": {
+    "@aws-sdk/client-secrets-manager": ">=3.0.0",
+    "dotenv": ">=8.0.0",
+    "express": ">=4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "dotenv": {
+      "optional": true
+    },
+    "express": {
+      "optional": true
+    },
+    "@aws-sdk/client-secrets-manager": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gopi15699/env-validator.git"
+  },
+  "homepage": "https://github.com/gopi15699/env-validator#readme",
+  "bugs": {
+    "url": "https://github.com/gopi15699/env-validator/issues"
+  }
+}
