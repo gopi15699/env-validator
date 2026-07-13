@@ -22,7 +22,7 @@ export function validate<const S extends EnvSchema>(
 
   const schemaIssues = validateSchema(schema);
   if (schemaIssues.length > 0) {
-    throw new Error(`[envguard] Invalid schema:\n  ${schemaIssues.join('\n  ')}`);
+    throw new Error(`[envaegis] Invalid schema:\n  ${schemaIssues.join('\n  ')}`);
   }
 
   const errors: ValidationError[] = [];

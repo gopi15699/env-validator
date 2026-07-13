@@ -1,5 +1,5 @@
 /**
- * basic-usage.ts — Demonstrates programmatic usage of envguard.
+ * basic-usage.ts — Demonstrates programmatic usage of envaegis.
  * Run after building: npx ts-node examples/basic-usage.ts
  */
 

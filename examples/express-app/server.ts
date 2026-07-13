@@ -1,5 +1,5 @@
 /**
- * Express demo — shows envguard integration.
+ * Express demo — shows envaegis integration.
  * The server refuses to start if any required env var is missing or invalid.
  */
 
