@@ -16,7 +16,7 @@ export function loadDotenv(options: LoaderOptions): void {
     dotenv = require('dotenv') as typeof import('dotenv');
   } catch {
     throw new Error(
-      '[env-validator] The "dotenv" option requires the dotenv package.\n  Run: npm install dotenv',
+      '[envguard] The "dotenv" option requires the dotenv package.\n  Run: npm install dotenv',
     );
   }
 
@@ -31,7 +31,7 @@ export function loadDotenv(options: LoaderOptions): void {
     // Only surface errors for explicitly-specified paths (not true/'default .env')
     if (result.error && typeof path === 'string' && options.dotenv !== true) {
       throw new Error(
-        `[env-validator] Failed to load .env file at "${path}": ${result.error.message}`,
+        `[envguard] Failed to load .env file at "${path}": ${result.error.message}`,
       );
     }
   }

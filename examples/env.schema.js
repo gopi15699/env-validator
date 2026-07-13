@@ -1,7 +1,7 @@
 /**
  * env.schema.js — Example schema for a typical Node.js web application.
- * Run: npx env-validator validate --schema=examples/env.schema.js --no-dotenv
- * Gen: npx env-validator generate --schema=examples/env.schema.js --output=.env.example
+ * Run: npx envguard validate --schema=examples/env.schema.js --no-dotenv
+ * Gen: npx envguard generate --schema=examples/env.schema.js --output=.env.example
  */
 module.exports = {
   // Server

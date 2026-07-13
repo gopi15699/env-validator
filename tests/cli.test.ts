@@ -49,7 +49,7 @@ describe('CLI argument handling', () => {
   it('exits 0 with --version', async () => {
     const { code, stdout } = await runCli(['--version']);
     expect(code).toBe(0);
-    expect(stdout).toMatch(/env-validator v/);
+    expect(stdout).toMatch(/envguard v/);
   });
 });
 

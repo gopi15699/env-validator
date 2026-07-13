@@ -104,7 +104,7 @@ export interface CreateEnvAsyncOptions extends CreateEnvOptions {
  * Async version of createEnv — supports plugins that fetch secrets asynchronously.
  *
  * @example
- * import { awsSecretsPlugin } from 'env-validator/plugins/aws-secrets';
+ * import { awsSecretsPlugin } from 'envguard/plugins/aws-secrets';
  * const env = await createEnvAsync(schema, {
  *   plugins: [awsSecretsPlugin({ secretId: 'my-app/prod' })],
  * });
@@ -125,7 +125,7 @@ export async function createEnvAsync<const S extends EnvSchema>(
       Object.assign(envSource, secrets);
     } catch (err) {
       throw new Error(
-        `[env-validator] Plugin "${plugin.name}" failed: ${(err as Error).message}`,
+        `[envguard] Plugin "${plugin.name}" failed: ${(err as Error).message}`,
       );
     }
   }

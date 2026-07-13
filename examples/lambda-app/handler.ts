@@ -1,5 +1,5 @@
 /**
- * AWS Lambda demo — shows env-validator cold-start validation.
+ * AWS Lambda demo — shows envguard cold-start validation.
  * Env vars are validated ONCE on cold start, then reused on warm invocations.
  */
 

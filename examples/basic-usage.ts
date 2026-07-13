@@ -1,5 +1,5 @@
 /**
- * basic-usage.ts — Demonstrates programmatic usage of env-validator.
+ * basic-usage.ts — Demonstrates programmatic usage of envguard.
  * Run after building: npx ts-node examples/basic-usage.ts
  */
 

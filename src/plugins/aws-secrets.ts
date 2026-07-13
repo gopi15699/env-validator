@@ -39,7 +39,7 @@ export function awsSecretsPlugin(options: AwsSecretsPluginOptions): EnvPlugin {
           await import('@aws-sdk/client-secrets-manager'));
       } catch {
         throw new Error(
-          '[env-validator] awsSecretsPlugin requires @aws-sdk/client-secrets-manager.\n' +
+          '[envguard] awsSecretsPlugin requires @aws-sdk/client-secrets-manager.\n' +
           '  Run: npm install @aws-sdk/client-secrets-manager',
         );
       }
@@ -53,7 +53,7 @@ export function awsSecretsPlugin(options: AwsSecretsPluginOptions): EnvPlugin {
 
       if (!response.SecretString) {
         throw new Error(
-          `[env-validator] Secret "${options.secretId}" has no SecretString value`,
+          `[envguard] Secret "${options.secretId}" has no SecretString value`,
         );
       }
 
@@ -62,7 +62,7 @@ export function awsSecretsPlugin(options: AwsSecretsPluginOptions): EnvPlugin {
         raw = JSON.parse(response.SecretString) as Record<string, unknown>;
       } catch {
         throw new Error(
-          `[env-validator] Secret "${options.secretId}" is not valid JSON`,
+          `[envguard] Secret "${options.secretId}" is not valid JSON`,
         );
       }
 

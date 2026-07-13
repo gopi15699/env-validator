@@ -1,5 +1,5 @@
 /**
- * Express demo — shows env-validator integration.
+ * Express demo — shows envguard integration.
  * The server refuses to start if any required env var is missing or invalid.
  */
 

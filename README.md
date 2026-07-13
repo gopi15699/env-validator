@@ -1,4 +1,6 @@
-# env-validator
+# envguard
+
+> **Note:** `envguard` was previously published as `@gopinath_natarajan/env-validator`. That package is now deprecated — install `envguard` instead.
 
 Schema-based environment variable validator for Node.js with **full TypeScript type inference**.
 
@@ -27,7 +29,7 @@ Validates that all required env vars are present, correctly typed, and within co
 ## Install
 
 ```sh
-npm install @gopinath_natarajan/env-validator
+npm install envguard
 # Optional: for .env file loading
 npm install dotenv
 ```
@@ -37,7 +39,7 @@ npm install dotenv
 ### Programmatic — add at the very top of your server entry point
 
 ```ts
-import { createEnv } from 'env-validator';
+import { createEnv } from 'envguard';
 
 const env = createEnv({
   NODE_ENV:     { type: 'string',  enum: ['development', 'staging', 'production'] as const },
@@ -60,20 +62,20 @@ console.log(env.DEBUG);          // boolean | undefined
 
 ```sh
 # Validate against a schema file
-npx env-validator validate --schema=env.schema.js
+npx envguard validate --schema=env.schema.js
 
 # Generate .env.example from schema
-npx env-validator generate --schema=env.schema.js --output=.env.example
+npx envguard generate --schema=env.schema.js --output=.env.example
 
 # CI/CD (vars already set in environment)
-npx env-validator validate --schema=env.schema.js --no-dotenv
+npx envguard validate --schema=env.schema.js --no-dotenv
 ```
 
 Add to `package.json`:
 ```json
 {
   "scripts": {
-    "prestart": "env-validator validate --schema=env.schema.js --no-dotenv"
+    "prestart": "envguard validate --schema=env.schema.js --no-dotenv"
   }
 }
 ```
@@ -150,7 +152,7 @@ const env = createEnv({
 Validates and returns coerced env values. Throws on failure by default.
 
 ```ts
-import { createEnv } from 'env-validator';
+import { createEnv } from 'envguard';
 const env = createEnv(schema, options);
 ```
 
@@ -159,8 +161,8 @@ const env = createEnv(schema, options);
 Async version — supports plugins that load secrets asynchronously.
 
 ```ts
-import { createEnvAsync } from 'env-validator';
-import { awsSecretsPlugin } from 'env-validator/plugins/aws-secrets';
+import { createEnvAsync } from 'envguard';
+import { awsSecretsPlugin } from 'envguard/plugins/aws-secrets';
 
 const env = await createEnvAsync(schema, {
   plugins: [awsSecretsPlugin({ secretId: 'my-app/production' })],
@@ -214,7 +216,7 @@ const env = createEnv(schema, {
 
 ```ts
 import express from 'express';
-import { attachEnv, envMiddleware } from 'env-validator/integrations/express';
+import { attachEnv, envMiddleware } from 'envguard/integrations/express';
 
 const app = express();
 
@@ -242,7 +244,7 @@ app.listen(env.PORT);
 Validates env vars **once on cold start**, then reuses the cached result on warm invocations:
 
 ```ts
-import { withEnvValidation } from 'env-validator/integrations/lambda';
+import { withEnvValidation } from 'envguard/integrations/lambda';
 
 export const handler = withEnvValidation(
   {
@@ -262,8 +264,8 @@ export const handler = withEnvValidation(
 ### Lambda + AWS Secrets Manager (async)
 
 ```ts
-import { withEnvValidationAsync } from 'env-validator/integrations/lambda';
-import { awsSecretsPlugin } from 'env-validator/plugins/aws-secrets';
+import { withEnvValidationAsync } from 'envguard/integrations/lambda';
+import { awsSecretsPlugin } from 'envguard/plugins/aws-secrets';
 
 export const handler = withEnvValidationAsync(
   schema,
@@ -281,7 +283,7 @@ export const handler = withEnvValidationAsync(
 Plugins load additional key/value pairs into the environment **before validation**.
 
 ```ts
-import { createEnvAsync, type EnvPlugin } from 'env-validator';
+import { createEnvAsync, type EnvPlugin } from 'envguard';
 
 // Custom plugin example
 const vaultPlugin = (): EnvPlugin => ({
@@ -298,7 +300,7 @@ const env = await createEnvAsync(schema, { plugins: [vaultPlugin()] });
 ### AWS Secrets Manager Plugin
 
 ```ts
-import { awsSecretsPlugin } from 'env-validator/plugins/aws-secrets';
+import { awsSecretsPlugin } from 'envguard/plugins/aws-secrets';
 
 const env = await createEnvAsync(schema, {
   plugins: [
@@ -318,7 +320,7 @@ Requires: `npm install @aws-sdk/client-secrets-manager`
 ## CLI Reference
 
 ```
-Usage: env-validator <command> [options]
+Usage: envguard <command> [options]
 
 Commands:
   validate   Validate environment variables against a schema  [default]
@@ -350,7 +352,7 @@ Exit codes:
 **GitHub Actions:**
 ```yaml
 - name: Validate environment
-  run: npx env-validator validate --schema=env.schema.js --no-dotenv
+  run: npx envguard validate --schema=env.schema.js --no-dotenv
   env:
     NODE_ENV:     production
     DATABASE_URL: ${{ secrets.DATABASE_URL }}
@@ -361,7 +363,7 @@ Exit codes:
 **Docker / entrypoint:**
 ```sh
 # entrypoint.sh
-node_modules/.bin/env-validator validate --schema=env.schema.js --no-dotenv || exit 1
+node_modules/.bin/envguard validate --schema=env.schema.js --no-dotenv || exit 1
 node dist/server.js
 ```
 

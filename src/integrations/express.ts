@@ -7,7 +7,7 @@ import { createEnv, type CreateEnvOptions, type EnvSchema, type InferEnv } from 
  *
  * @example
  * import express from 'express';
- * import { attachEnv } from 'env-validator/integrations/express';
+ * import { attachEnv } from 'envguard/integrations/express';
  *
  * const app = express();
  * const env = attachEnv(app, {

@@ -16,7 +16,7 @@ type EnvHandler<TEvent, TResult, TEnv> = (
  * Validation runs once on cold start and is cached for warm invocations.
  *
  * @example
- * import { withEnvValidation } from 'env-validator/integrations/lambda';
+ * import { withEnvValidation } from 'envguard/integrations/lambda';
  *
  * export const handler = withEnvValidation(
  *   {
@@ -55,8 +55,8 @@ export function withEnvValidation<
  * The first invocation (cold start) will await plugin loading.
  *
  * @example
- * import { withEnvValidationAsync } from 'env-validator/integrations/lambda';
- * import { awsSecretsPlugin } from 'env-validator/plugins/aws-secrets';
+ * import { withEnvValidationAsync } from 'envguard/integrations/lambda';
+ * import { awsSecretsPlugin } from 'envguard/plugins/aws-secrets';
  *
  * export const handler = withEnvValidationAsync(schema, myHandler, {
  *   plugins: [awsSecretsPlugin({ secretId: 'my-app/prod' })],
